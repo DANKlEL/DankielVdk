@@ -65,7 +65,12 @@
             </ul>
         </div>
         <div class="contenedor-video">
-            <img src="img/Textos/LyricVisualConPortada.png" alt="Texto Lyric Visual con Portada" class="small-image" id="imagenRestoVisuales">
+            <!-- Imágenes para los tipos de visuales -->
+            <img src="img/Textos/LyricPro.png" alt="Lyric Visual con Portada" id="imagenLyricPro" class="small-image">
+            <img src="img/Textos/LyricSimple.png" alt="Lyric Visual Simple" id="imagenLyricSimple" class="small-image" style="display: none;">
+            <img src="img/Textos/VIDEOCLIP.png" alt="Edit de Video Clip" id="imagenVideoClip" class="small-image" style="display: none;">
+            <img src="img/Textos/Concept.png" alt="Just Visual Concept" id="imagenConcept" class="small-image" style="display: none;">
+            <img src="img/Textos/AMV.png" alt="AMV" id="imagenAMV" class="small-image" style="display: none;">
             <div class="carousel">
                 <div id="videoPlayerContainerRestoVisuales">
                     <iframe id="playerRestoVisuales" width="100%" height="100%" src="https://www.youtube.com/embed/ZRV_zPK18Gg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -122,6 +127,23 @@
         iframe.src = `https://www.youtube.com/embed/${videosPorTipo[currentTipoVisual][currentVideoIndexRestoVisuales]}`;
     }
 
+    // Función para cambiar la imagen según el tipo de visual
+    function updateImageRestoVisuales() {
+        const images = {
+            'lyric-con-portada': document.getElementById('imagenLyricPro'),
+            'lyric-simple': document.getElementById('imagenLyricSimple'),
+            'edit-video-clip': document.getElementById('imagenVideoClip'),
+            'just-visual-concept': document.getElementById('imagenConcept'),
+            'amv': document.getElementById('imagenAMV')
+        };
+
+        // Ocultar todas las imágenes
+        Object.values(images).forEach(img => img.style.display = 'none');
+
+        // Mostrar la imagen correspondiente al tipo de visual actual
+        images[currentTipoVisual].style.display = 'block';
+    }
+
     // Eventos para las flechas
     document.getElementById('nextVideoRestoVisuales').addEventListener('click', () => {
         currentVideoIndexRestoVisuales = (currentVideoIndexRestoVisuales + 1) % videosPorTipo[currentTipoVisual].length;
@@ -141,11 +163,13 @@
             currentTipoVisual = tipo;
             currentVideoIndexRestoVisuales = 0; // Reiniciar el índice del video
             updateVideoRestoVisuales();
+            updateImageRestoVisuales(); // Actualizar la imagen
         });
     });
 
-    // Inicializar el primer video
+    // Inicializar el primer video y la imagen
     updateVideoRestoVisuales();
+    updateImageRestoVisuales();
 
     // Evento para el rectángulo de Precio/Información (3D)
     document.getElementById('infoRectangle3D').addEventListener('click', async () => {

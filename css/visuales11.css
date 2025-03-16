@@ -538,15 +538,23 @@
     font-size: 14px;
 }
 
-/* Imagen de texto */
-#imagenRestoVisuales {
-    width: 500px;
+/* Imágenes para los tipos de visuales */
+#imagenLyricPro,
+#imagenLyricSimple,
+#imagenVideoClip,
+#imagenConcept,
+#imagenAMV {
+    width: 500px; /* Mismo tamaño que las imágenes de 3D y Pixel Art */
     height: auto;
     margin-bottom: 20px;
     border-radius: 5px;
     transition: transform 0.3s ease;
 }
 
-#imagenRestoVisuales:hover {
-    transform: scale(1.1);
+#imagenLyricPro:hover,
+#imagenLyricSimple:hover,
+#imagenVideoClip:hover,
+#imagenConcept:hover,
+#imagenAMV:hover {
+    transform: scale(1.1); /* Efecto hover igual que las imágenes de 3D y Pixel Art */
 }
