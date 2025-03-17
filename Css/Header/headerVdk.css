@@ -1,0 +1,74 @@
+/* Estilos generales del header */
+.header {
+    position: fixed; /* Fija el header en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+    transition: transform 0.3s ease; /* Transición suave para ocultar/mostrar */
+}
+
+/* Contenedor del header */
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Sección del logo */
+.header .logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.header .logo a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.header .logo a:hover {
+    transform: scale(1.1); /* Efecto de escala al hacer hover */
+}
+
+.header .logo img {
+    max-height: 80px; /* Ajusta el tamaño del logo */
+    width: auto;
+}
+
+/* Estilos del menú */
+.menu .nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.menu .nav li {
+    margin: 0 15px;
+}
+
+.menu .nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+.menu .nav a:hover {
+    color: #ccc; /* Cambia el color al hacer hover */
+}
+
+/* Estilos para ocultar el header al hacer scroll */
+.header.hidden {
+    transform: translateY(-61%); /* Oculta el 61% del header */
+}

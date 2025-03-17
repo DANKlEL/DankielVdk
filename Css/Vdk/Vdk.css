@@ -1,0 +1,52 @@
+/* Estilos iniciales */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    overflow: hidden;
+}
+
+/* Estilos para el círculo y el logo */
+.circle {
+    width: 600px; /* Tamaño del círculo */
+    height: 600px; /* Tamaño del círculo */
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeOutCircle 1.5s ease-in-out forwards;
+}
+
+.circle img {
+    width: 500px; /* Tamaño del logo */
+    height: 500px; /* Tamaño del logo */
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Animación para desvanecer el círculo */
+@keyframes fadeOutCircle {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Efecto hover para el logo */
+.circle:hover img {
+    opacity: 0; /* Solo desaparece la imagen */
+}
+
+/* Cambiar el fondo a blanco después de la animación */
+body.animate-background {
+    background-color: white;
+    transition: background-color 1.5s ease-in-out;
+}

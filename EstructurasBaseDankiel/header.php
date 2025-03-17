@@ -13,7 +13,8 @@
         <div class="menu">
             <ul class="nav" id="nav">
                 <li><a href="index.php">INICIO</a></li>
-                <li><a href="">¿QUIERES UN VISUAL?</a></li>
+                <li><a href="">VISUALES</a></li>
+                <li><a href="Vdk.php">SHOT BY VDK</a></li>
                 <li class="dropdown">
                     <a href="ropa.php">MARCA DE ROPA</a>
                     <ul class="dropdown-menu">

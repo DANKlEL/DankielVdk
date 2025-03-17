@@ -2,9 +2,9 @@
 session_start();
 $username = isset($_SESSION['username']) ? $_SESSION['username'] : null;
 ?>
-<?php require 'EstructurasBase/head.php'; ?>
+<?php require 'EstructurasBaseDankiel/head.php'; ?>
 <body>
-<?php require 'EstructurasBase/header.php'; ?>
+<?php require 'EstructurasBaseDankiel/header.php'; ?>
     <div class="pais" id="pais-container"> 
         <?php require 'js/Paises/seleccionPais.php'; ?>
     </div>
