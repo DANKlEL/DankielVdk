@@ -51,6 +51,12 @@
     padding-top: 20px;
 }
 
+/* Ajustar tamaño del GIF para que coincida con LogoDankiel.jpg */
+.header .logo .logo2 img {
+    width: auto; /* Mantiene el ancho original */
+    height: 100px; /* Ajusta la altura al tamaño deseado */
+}
+
 /* Sección de firmas */
 .header .firmas {
     position: absolute;

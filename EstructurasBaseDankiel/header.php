@@ -3,7 +3,7 @@
     <div class="header" id="main-header">
         <div class="logo">
             <a href="" class="logo1"><img src="img/Logos/ShotByDankiel.jpg" alt="Logo 1"/></a>
-            <a href="" class="logo2"><img src="img/Logos/LogoDankiel.jpg" alt="Logo 2"/></a>
+            <a href="" class="logo2"><img id="logo2" src="img/Logos/LogoDankiel.jpg" alt="Logo 2"/></a>
             <a href="" class="logo3"><img src="img/Logos/LogoBlackGengar.jpg" alt="Logo 3"/></a>
         </div>
         <div class="firmas">
@@ -31,4 +31,29 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Obtener la imagen del logo
+        const logo2 = document.getElementById('logo2');
+
+        // Guardar el tamaño original de la imagen
+        const originalWidth = logo2.clientWidth;
+        const originalHeight = logo2.clientHeight;
+
+        // Cambiar la imagen al pasar el cursor
+        logo2.addEventListener('mouseover', function() {
+            this.src = 'img/Animacion/Cabeza.gif';
+            // Aplicar el tamaño original al GIF
+            this.style.width = `${originalWidth}px`;
+            this.style.height = `${originalHeight}px`;
+        });
+
+        // Restaurar la imagen al quitar el cursor
+        logo2.addEventListener('mouseout', function() {
+            this.src = 'img/Logos/LogoDankiel.jpg';
+            // Restaurar el tamaño original al JPG
+            this.style.width = `${originalWidth}px`;
+            this.style.height = `${originalHeight}px`;
+        });
+    </script>
 </header>

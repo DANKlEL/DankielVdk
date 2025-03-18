@@ -6,47 +6,60 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: black; /* Fondo negro inicial */
     overflow: hidden;
 }
 
-/* Estilos para el círculo y el logo */
-.circle {
-    width: 600px; /* Tamaño del círculo */
-    height: 600px; /* Tamaño del círculo */
-    border-radius: 50%;
-    background-color: white;
+/* Contenedor para las tomas iniciales (destello) */
+.flash-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: fadeOutCircle 1.5s ease-in-out forwards;
+    z-index: 9999; /* Asegura que esté por encima de todo */
 }
 
-.circle img {
-    width: 500px; /* Tamaño del logo */
-    height: 500px; /* Tamaño del logo */
-    transition: opacity 0.5s ease-in-out;
+.flash-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen al tamaño del contenedor */
 }
 
-/* Animación para desvanecer el círculo */
-@keyframes fadeOutCircle {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(0);
-        opacity: 0;
-    }
+/* Contenedor de bienvenida */
+.welcome-container {
+    display: none; /* Ocultar inicialmente */
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9998; /* Debajo del contenedor de destello */
 }
 
-/* Efecto hover para el logo */
-.circle:hover img {
-    opacity: 0; /* Solo desaparece la imagen */
+/* Texto "Shot by VDK" */
+.welcome-text {
+    font-family: "skolar-sans-latin", sans-serif;
+    font-size: 6vw;
+    font-weight: 900;
+    color: white; /* Color inicial: blanco */
+    text-transform: uppercase;
+    letter-spacing: 0.1ch;
 }
 
-/* Cambiar el fondo a blanco después de la animación */
-body.animate-background {
-    background-color: white;
-    transition: background-color 1.5s ease-in-out;
+/* Estilos para cada letra */
+.welcome-text span {
+    display: inline-block;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+/* Ocultar el header inicialmente */
+.header.initial-hidden {
+    visibility: hidden;
 }

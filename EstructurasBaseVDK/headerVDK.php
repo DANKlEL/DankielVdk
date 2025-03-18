@@ -1,5 +1,5 @@
 <header>
-    <div class="header" id="main-header">
+    <div class="header initial-hidden" id="main-header">
         <div class="logo">
             <a href="" class="logo1"><img src="img/Vdk/vdkHeader.png" alt="Logo 1"/></a>
         </div>
