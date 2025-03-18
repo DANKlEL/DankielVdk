@@ -4,7 +4,7 @@
         <div class="logo">
             <a href="" class="logo1"><img src="img/Logos/ShotByDankiel.jpg" alt="Logo 1"/></a>
             <a href="" class="logo2"><img id="logo2" src="img/Logos/LogoDankiel.jpg" alt="Logo 2"/></a>
-            <a href="" class="logo3"><img src="img/Logos/LogoBlackGengar.jpg" alt="Logo 3"/></a>
+            <a href="" class="logo3"><img id="logo3" src="img/Logos/LogoBlackGengar.jpg" alt="Logo 3"/></a>
         </div>
         <div class="firmas">
             <a href="" class="firma1"><img src="img/Firmas/FirmaDankiel.jpg" alt="Firma 1"/></a>
@@ -33,27 +33,33 @@
     </div>
 
     <script>
-        // Obtener la imagen del logo
-        const logo2 = document.getElementById('logo2');
+        // Función para manejar el efecto de hover en los logos
+        function setupLogoHover(logoId, gifPath) {
+            const logo = document.getElementById(logoId);
 
-        // Guardar el tamaño original de la imagen
-        const originalWidth = logo2.clientWidth;
-        const originalHeight = logo2.clientHeight;
+            // Guardar el tamaño original de la imagen
+            const originalWidth = logo.clientWidth;
+            const originalHeight = logo.clientHeight;
 
-        // Cambiar la imagen al pasar el cursor
-        logo2.addEventListener('mouseover', function() {
-            this.src = 'img/Animacion/Cabeza.gif';
-            // Aplicar el tamaño original al GIF
-            this.style.width = `${originalWidth}px`;
-            this.style.height = `${originalHeight}px`;
-        });
+            // Cambiar la imagen al pasar el cursor
+            logo.addEventListener('mouseover', function() {
+                this.src = gifPath;
+                // Aplicar el tamaño original al GIF
+                this.style.width = `${originalWidth}px`;
+                this.style.height = `${originalHeight}px`;
+            });
 
-        // Restaurar la imagen al quitar el cursor
-        logo2.addEventListener('mouseout', function() {
-            this.src = 'img/Logos/LogoDankiel.jpg';
-            // Restaurar el tamaño original al JPG
-            this.style.width = `${originalWidth}px`;
-            this.style.height = `${originalHeight}px`;
-        });
+            // Restaurar la imagen al quitar el cursor
+            logo.addEventListener('mouseout', function() {
+                this.src = `img/Logos/${logoId === 'logo2' ? 'LogoDankiel.jpg' : 'LogoBlackGengar.jpg'}`;
+                // Restaurar el tamaño original al JPG
+                this.style.width = `${originalWidth}px`;
+                this.style.height = `${originalHeight}px`;
+            });
+        }
+
+        // Configurar el efecto de hover para ambos logos
+        setupLogoHover('logo2', 'img/Animacion/Cabeza.gif'); // Para LogoDankiel.jpg
+        setupLogoHover('logo3', 'img/Animacion/CabezaBlackGengar.gif'); // Para LogoBlackGengar.jpg
     </script>
 </header>
