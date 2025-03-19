@@ -9,6 +9,7 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : null;
         <?php require 'js/Paises/seleccionPais.php'; ?>
     </div>
 <main>
+    <?php require 'carrusel.php'; ?>
     <div class="image-container">
         <div class="image-item">
             <a href="Visuales/Visuales.php"><img src="img/Carteles/Visuales.jpg" alt="Visuales"></a>
