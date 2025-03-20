@@ -1,4 +1,4 @@
-<?php require 'EstructurasBaseDankiel/head.php'; ?>
+<?php require 'EstructurasBaseIndex/Head.php'; ?>
 <body>
     <div id="videoContainer">
         <table id="centeredTable">
