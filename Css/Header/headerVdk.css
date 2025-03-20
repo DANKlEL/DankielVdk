@@ -1,74 +1,158 @@
-/* Estilos generales del header */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('ruta_a_tu_fuente/Montserrat-Light.ttf') format('truetype');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('ruta_a_tu_fuente/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+:root {
+    --header-bg: #000000; /* Fondo negro */
+    --text-color: #FFFFFF; /* Texto blanco */
+    --hover-color: #695CFE; /* Color al hacer hover */
+    --divider-color: #333333; /* Color de la línea divisoria */
+    --transition-speed: 0.3s;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
 .header {
-    position: fixed; /* Fija el header en la parte superior */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: black;
-    color: white;
+    background-color: var(--header-bg);
+    color: var(--text-color);
+    z-index: 1000;
+    transition: background-color var(--transition-speed);
+}
+
+.header-top {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
-    z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
-    transition: transform 0.3s ease; /* Transición suave para ocultar/mostrar */
+    padding: 20px; /* Header más alto */
+    height: 80px; /* Altura del header */
 }
 
-/* Contenedor del header */
-.header {
-    width: 100%;
+.menu-search {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    gap: 20px; /* Espacio entre menú hamburguesa y lupa */
 }
 
-/* Sección del logo */
-.header .logo {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
+.menu-icon, .search-icon, .user-icons {
+    font-size: 28px; /* Íconos más grandes */
+    cursor: pointer;
 }
 
-.header .logo a {
-    display: inline-block;
-    transition: transform 0.3s ease;
+.logo img {
+    height: 200px; /* Logo más grande */
 }
 
-.header .logo a:hover {
-    transform: scale(1.1); /* Efecto de escala al hacer hover */
+.user-icons a {
+    color: var(--text-color);
+    margin-left: 20px;
+    transition: color var(--transition-speed);
 }
 
-.header .logo img {
-    max-height: 80px; /* Ajusta el tamaño del logo */
-    width: auto;
+.user-icons a:hover {
+    color: var(--hover-color);
 }
 
-/* Estilos del menú */
-.menu .nav {
+.header-divider {
+    height: 1px;
+    background-color: var(--divider-color);
+    margin: 0 20px;
+}
+
+.submenu {
+    padding: 15px 20px;
+    text-align: center; /* Centrar el texto del submenú */
+}
+
+.submenu ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centrar los elementos del submenú */
+    gap: 40px; /* Espacio entre elementos */
+}
+
+.submenu ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 18px; /* Texto más grande */
+    font-weight: 700; /* Negritas */
+    text-transform: uppercase;
+    transition: color var(--transition-speed);
+}
+
+.submenu ul li a:hover {
+    color: var(--hover-color);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: var(--header-bg);
+    padding: 20px;
+    width: 100%;
+    left: 0;
+    top: 100%;
+    border-top: 1px solid var(--divider-color);
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
     display: flex;
     justify-content: center;
-    padding: 0;
-    margin: 0;
+    gap: 40px;
 }
 
-.menu .nav li {
-    margin: 0 15px;
+.dropdown-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.menu .nav a {
+.dropdown-column a {
+    color: var(--text-color);
     text-decoration: none;
-    color: white;
     font-size: 16px;
-    padding: 5px 10px;
-    transition: color 0.3s ease;
+    font-weight: 300; /* Sin negritas */
+    transition: color var(--transition-speed);
 }
 
-.menu .nav a:hover {
-    color: #ccc; /* Cambia el color al hacer hover */
+.dropdown-column a:hover {
+    color: var(--hover-color);
 }
 
-/* Estilos para ocultar el header al hacer scroll */
-.header.hidden {
-    transform: translateY(-61%); /* Oculta el 61% del header */
+.search-menu {
+    display: none;
+    padding: 10px 20px;
+    background-color: var(--header-bg);
+}
+
+.search-menu input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--text-color);
+    outline: none;
+}
+
+.initial-hidden {
+    display: none;
 }
