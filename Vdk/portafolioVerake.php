@@ -12,18 +12,7 @@
 <!-- Popup de VERAKE -->
 <div id="popup" class="popup">
   <div class="popup-contenido">
-    <!-- Encabezado del popup con botón de modo -->
-    <div class="popup-encabezado">
-      <button id="toggle-mode" class="mode-toggle">
-        <svg class="moon-icon" viewBox="0 0 24 24">
-          <path fill="currentColor" d="M12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z"/>
-        </svg>
-        <svg class="sun-icon" viewBox="0 0 24 24" style="display:none;">
-          <path fill="currentColor" d="M3.55,18.54L4.96,19.95L6.76,18.16L5.34,16.74M11,22.45C11.32,22.45 13,22.45 13,22.45V19.5H11M12,5.5A6,6 0 0,0 6,11.5A6,6 0 0,0 12,17.5A6,6 0 0,0 18,11.5A6,6 0 0,0 12,5.5M20,12.5H23V10.5H20M17.24,18.16L19.04,19.95L20.45,18.54L18.66,16.74M20.45,6.46L19.04,5.05L17.24,6.84L18.66,8.26M6.76,6.84L4.96,5.05L3.55,6.46L5.34,8.26L6.76,6.84M12,0.55H13V3.5H12M1,11.5H4V13.5H1M12,8.5A3,3 0 0,1 15,11.5A3,3 0 0,1 12,14.5A3,3 0 0,1 9,11.5A3,3 0 0,1 12,8.5Z"/>
-        </svg>
-      </button>
-      <button id="cerrar-popup" class="cerrar-popup">X</button>
-    </div>
+    <?php require 'portafolioModoClaroOscuro.php'; ?>
 
     <!-- Contenido principal del popup -->
     <div class="popup-principal">
