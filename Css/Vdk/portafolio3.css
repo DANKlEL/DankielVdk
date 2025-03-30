@@ -133,15 +133,38 @@
     margin-bottom: 0;
 }
 
+.video-banner-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.video-banner-container iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 177.78vh;
+    height: 100vh;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+/* Banner de video */
 .banner-perfil {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
-    height: 200px;
+    height: 300px;
     overflow: hidden;
     position: relative;
     border-top: 4px solid white;
     border-bottom: 4px solid white;
+    background-color: #000;
+    z-index: 1; /* Establece un z-index base */
 }
+
 
 .banner-perfil img {
     width: 100%;
@@ -149,28 +172,46 @@
     object-fit: cover;
 }
 
+/* Contenedor del perfil con z-index mayor */
 .perfil-contenido {
     position: relative;
     padding: 0 20px;
-    margin-top: -50px;
-    z-index: 2;
+    margin-top: -100px;
+    z-index: 10; /* Mayor que el banner para que esté encima */
     text-align: center;
 }
 
+
+/* Foto de perfil (estilos existentes mejorados) */
 .foto-perfil {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     border: 4px solid #1a1a1a;
     overflow: hidden;
     background-color: #1a1a1a;
     margin: 0 auto 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative; /* Aseguramos posicionamiento */
+    z-index: 11; /* Aún más alto que el contenedor */
+}
+
+.foto-perfil:hover {
+    transform: scale(1.1);
+    border-color: #a91313;
+    box-shadow: 0 6px 15px rgba(169, 19, 19, 0.4);
 }
 
 .foto-perfil img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.foto-perfil:hover img {
+    transform: scale(1.05);
 }
 
 .nombre-perfil h1 {
