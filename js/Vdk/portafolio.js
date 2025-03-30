@@ -2,12 +2,15 @@
 const botonMasInformacion = document.getElementById("boton-mas-informacion");
 const popup = document.getElementById("popup");
 const cerrarPopup = document.getElementById("cerrar-popup");
-const listaVideos = document.getElementById("lista-videos");
-const contenedorVideos = document.getElementById("contenedor-videos");
+const categoriaBtns = document.querySelectorAll(".categoria-btn");
 const vistaNormalBtn = document.getElementById("vista-normal");
 const vistaGridBtn = document.getElementById("vista-grid");
 const flechaIzquierda = document.getElementById("flecha-izquierda");
 const flechaDerecha = document.getElementById("flecha-derecha");
+const contenedorVideos = document.getElementById("contenedor-videos");
+const opcionesVisuales = document.getElementById("opciones-visuales");
+const mensajeVisuales = document.getElementById("mensaje-visuales");
+const listaVideos = document.getElementById("lista-videos");
 
 // Datos de los videos por categoría
 const videos = {
@@ -23,6 +26,11 @@ const videos = {
         "https://www.youtube.com/embed/Hgm_t-41DvI",
         "https://www.youtube.com/embed/CbZ_EZ0oYOw",
         "https://www.youtube.com/embed/KFFCOZw0Frc"
+    ],
+    "pixel-art": [
+        // Agrega aquí los enlaces de videos de Pixel Art
+        "https://www.youtube.com/embed/ejemplo1",
+        "https://www.youtube.com/embed/ejemplo2"
     ],
     "3d": [
         "https://www.youtube.com/embed/GJQ6T2fTeyY",
@@ -55,6 +63,40 @@ const videos = {
 // Variables para controlar la vista y el índice del video
 let vistaActual = "normal"; // Puede ser "normal" o "grid"
 let indiceVideoActual = 0;
+
+// Función para cambiar entre categorías
+function cambiarCategoria(categoria) {
+    // Ocultar todos los contenidos de categoría
+    document.querySelectorAll(".categoria-content").forEach(content => {
+        content.classList.remove("active");
+    });
+    
+    // Mostrar el contenido de la categoría seleccionada
+    document.getElementById(`${categoria}-content`).classList.add("active");
+    
+    // Actualizar botones activos
+    categoriaBtns.forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-categoria") === categoria);
+    });
+    
+    // Si es la categoría de visuales, mostrar opciones
+    if (categoria === "visuales") {
+        opcionesVisuales.style.display = "block";
+        mensajeVisuales.style.display = "none";
+        contenedorVideos.innerHTML = ""; // Limpiar videos
+    } else {
+        opcionesVisuales.style.display = "none";
+        mensajeVisuales.style.display = "block";
+    }
+}
+
+// Eventos para cambiar categoría
+categoriaBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const categoria = btn.getAttribute("data-categoria");
+        cambiarCategoria(categoria);
+    });
+});
 
 // Función para cambiar la vista
 function cambiarVista(vista) {
@@ -139,7 +181,7 @@ popup.addEventListener("click", (event) => {
     }
 });
 
-// Cargar videos al hacer clic en una categoría
+// Cargar videos al hacer clic en una categoría de visuales
 listaVideos.addEventListener("click", (event) => {
     if (event.target.tagName === "LI") {
         const categoria = event.target.getAttribute("data-categoria");
@@ -164,3 +206,7 @@ listaVideos.addEventListener("click", (event) => {
         }
     }
 });
+
+// Inicializar
+cambiarCategoria("diseños"); // Mostrar diseños por defecto
+cambiarVista("normal"); // Establecer vista normal por defecto
