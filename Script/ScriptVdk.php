@@ -5,4 +5,3 @@
 <script src="Js/Vdk/videosPortafolio.js"></script>
 <script src="Js/Vdk/degradados.js"></script>
 <script src="Js/Vdk/menu.js"></script>
-<script src="Js/Vdk/portafolio.js"></script>
