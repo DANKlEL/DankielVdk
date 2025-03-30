@@ -38,6 +38,7 @@
   margin-top: 0;
 }
 
+/* Contenedores de artistas con espacio para pestañas */
 .contenedor-verake,
 .contenedor-dankiel,
 .contenedor-ddxous {
@@ -49,18 +50,59 @@
   border: 10px solid transparent;
   border-image-slice: 1;
   animation: gradient-rotate 3s linear infinite;
+  padding-top: 60px; /* Espacio para las pestañas */
+  box-sizing: border-box;
 }
 
+/* Ajuste para el video dentro del contenedor */
 .video-portafolio {
   width: 100%;
-  height: 100%;
+  height: calc(100% + 40px);
   object-fit: cover;
+  margin-top: -40px; /* Compensa el padding del contenedor */
 }
 
 @keyframes gradient-rotate {
   0% { border-image: linear-gradient(45deg, #000000, #a91313) 1; }
   50% { border-image: linear-gradient(45deg, #a91313, #000000) 1; }
   100% { border-image: linear-gradient(45deg, #000000, #a91313) 1; }
+}
+
+/* Estilos para las pestañas de artistas */
+.pestanas-artistas {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  pointer-events: none; /* Permite hacer clic en elementos detrás */
+}
+
+.pestana-artista-btn {
+  padding: 10px 20px;
+  background: rgba(26, 26, 26, 0.9);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  pointer-events: auto; /* Habilita clic solo en los botones */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+.pestana-artista-btn:hover {
+  background: rgba(169, 19, 19, 0.7);
+}
+
+.pestana-artista-btn.active {
+  background: #a91313;
+  box-shadow: 0 4px 15px rgba(169, 19, 19, 0.6);
 }
 
 /* Botón Más Información */
@@ -82,36 +124,6 @@
   background-color: #8a0f0f;
   transform: translateY(-2px);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Estilos para las pestañas de artistas */
-.pestanas-artistas {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 100;
-  display: flex;
-  gap: 10px;
-}
-
-.pestana-artista-btn {
-  padding: 8px 16px;
-  background: rgba(0,0,0,0.7);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-.pestana-artista-btn:hover {
-  background: rgba(169,19,19,0.8);
-}
-
-.pestana-artista-btn.active {
-  background: #a91313;
-  box-shadow: 0 0 10px rgba(169,19,19,0.8);
 }
 
 /* Estilos para el popup */
@@ -143,6 +155,26 @@
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pestana-artista-btn {
+    padding: 8px 15px;
+    font-size: 12px;
+  }
+  
+  .contenedor-verake,
+  .contenedor-dankiel,
+  .contenedor-ddxous {
+    height: 700px;
+    padding-top: 50px;
+  }
+  
+  .video-portafolio {
+    margin-top: -30px;
+    height: calc(100% + 30px);
+  }
 }
 </style>
 
