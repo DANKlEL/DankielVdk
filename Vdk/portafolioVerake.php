@@ -10,9 +10,16 @@
 </div>
 
 <!-- Popup de VERAKE -->
-<div id="popup" class="popup">
-  <div class="popup-contenido">
+<div class="popup">
+  <div class="popup-contenido" data-artista="verake">
     <?php require 'portafolioModoClaroOscuro.php'; ?>
+
+    <!-- Pestañas de artistas -->
+    <div class="pestanas-artistas">
+      <button class="pestana-artista-btn" data-artista="verake">Verake</button>
+      <button class="pestana-artista-btn" data-artista="dankiel">Dankiel</button>
+      <button class="pestana-artista-btn" data-artista="ddxous">Ddxous</button>
+    </div>
 
     <!-- Contenido principal del popup -->
     <div class="popup-principal">
@@ -63,13 +70,24 @@
 
       <!-- Contenido dinámico -->
       <div class="contenido-dinamico">
-        <!-- Diseños (2x2 grid) -->
+        <!-- Diseños -->
         <div id="diseños-content" class="categoria-content active">
-          <div class="grid-diseños">
-            <div class="diseño-item"><img src="img/vdk/verake/diseño1.jpg" alt="Diseño1"></div>
-            <div class="diseño-item"><img src="img/vdk/verake/diseño2.jpg" alt="Diseño2"></div>
-            <div class="diseño-item"><img src="img/vdk/verake/diseño3.jpg" alt="Diseño3"></div>
-            <div class="diseño-item"><img src="img/vdk/verake/diseño4.jpg" alt="Diseño4"></div>
+          <div id="opciones-diseños" style="display: none;">
+            <ul id="lista-diseños">
+              <li data-categoria="renders">Renders</li>
+              <li data-categoria="portadas">Portadas</li>
+              <li data-categoria="miniaturas">Miniaturas</li>
+              <li data-categoria="pixel-art-design">PixelArt</li>
+              <li data-categoria="logos">Logos</li>
+            </ul>
+          </div>
+          
+          <div id="mensaje-diseños" class="mensaje-diseños">
+            <p>Haz clic en "Diseños" para ver las categorías disponibles</p>
+          </div>
+
+          <div id="contenedor-diseños" class="contenedor-diseños grid-view">
+            <!-- Aquí se cargarán los diseños -->
           </div>
         </div>
 
@@ -130,11 +148,418 @@
   </div>
 </div>
 
+<style>
+/* Estilos para las pestañas de artistas */
+.pestanas-artistas {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #333;
+}
+
+.pestana-artista-btn {
+  padding: 8px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.pestana-artista-btn:hover {
+  background-color: #555;
+}
+
+.pestana-artista-btn.active {
+  background-color: #a91313;
+  font-weight: bold;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-contenido {
+  background-color: #1a1a1a;
+  padding: 0;
+  border-radius: 15px;
+  width: 900px;
+  max-width: 90%;
+  height: auto;
+  max-height: 90vh;
+  position: relative;
+  animation: fadeIn 0.5s ease;
+  overflow: hidden;
+  color: white;
+  padding-bottom: 80px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Estilos del banner de perfil */
+.banner-perfil {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  border-top: 4px solid white;
+  border-bottom: 4px solid white;
+  background-color: #000;
+  z-index: 1;
+}
+
+.video-banner-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video-banner-container iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 177.78vh;
+  height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Estilos del perfil */
+.perfil-contenido {
+  position: relative;
+  padding: 0 20px;
+  margin-top: -100px;
+  z-index: 10;
+  text-align: center;
+}
+
+.foto-perfil {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #1a1a1a;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  margin: 0 auto 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.foto-perfil:hover {
+  transform: scale(1.1);
+  border-color: #a91313;
+  box-shadow: 0 6px 15px rgba(169, 19, 19, 0.4);
+}
+
+.foto-perfil img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nombre-perfil h1 {
+  margin: 0;
+  font-size: 24px;
+  color: white;
+}
+
+/* Estilos de categorías */
+.categorias-perfil {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.categoria-btn {
+  padding: 8px 15px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.categoria-btn:hover {
+  background-color: #555;
+}
+
+.categoria-btn.active {
+  background-color: #a91313;
+}
+
+/* Estilos de redes sociales */
+.redes-sociales-perfil {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.logo-red-social {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.logo-red-social:hover {
+  transform: scale(1.2);
+}
+
+/* Estilos del contenido dinámico */
+.contenido-dinamico {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 20px 20px;
+  max-height: calc(100vh - 400px);
+  overflow-y: auto;
+}
+
+.categoria-content {
+  display: none;
+}
+
+.categoria-content.active {
+  display: block;
+}
+
+/* Estilos para diseños */
+.grid-diseños {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.diseño-item {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.diseño-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.diseño-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Estilos para visuales (videos) */
+.contenedor-videos.normal-view {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.contenedor-videos.normal-view iframe {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.contenedor-videos.grid-view {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 15px;
+}
+
+.contenedor-videos.grid-view iframe {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para botones de vista */
+.vista-botones {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 50px;
+}
+
+.vista-boton {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.vista-boton:hover {
+  background-color: #a91313;
+  transform: scale(1.1);
+}
+
+.vista-boton.active {
+  background-color: #a91313;
+  box-shadow: 0 0 0 3px rgba(169, 19, 19, 0.5);
+}
+
+.vista-icon {
+  width: 24px;
+  height: 24px;
+  fill: white;
+}
+
+/* Estilos para flechas de navegación */
+.flechas-navegacion {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 9;
+}
+
+.flecha-navegacion {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flecha-navegacion:hover {
+  background-color: #a91313;
+}
+
+/* Estilos para el texto "Acerca de mí" */
+.acerca-texto {
+  padding: 20px;
+  text-align: center;
+}
+
+.acerca-texto h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Estilos para animación del nombre */
+.nombre-animado {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+
+.nombre-animado span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.nombre-animado:hover span {
+  animation: bounce 0.5s ease;
+  animation-fill-mode: both;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .popup-contenido {
+    width: 95%;
+  }
+  
+  .contenedor-videos.grid-view {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .contenedor-videos.normal-view iframe {
+    height: 250px;
+  }
+  
+  .vista-boton {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contenedor-videos.grid-view {
+    grid-template-columns: 1fr;
+  }
+  
+  .contenedor-videos.grid-view iframe {
+    height: 180px;
+  }
+  
+  .vista-boton {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .vista-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .flechas-navegacion {
+    padding: 0 10px;
+  }
+}
+</style>
+
 <script>
 // JavaScript específico de VERAKE
 document.addEventListener('DOMContentLoaded', function() {
     // Datos de videos de VERAKE
-    const videos = {
+    const videosVerake = {
         "video-lyrics": [
             "https://www.youtube.com/embed/jBII3FFTgcM",
             "https://www.youtube.com/embed/OvQeAl7Qr6U",
@@ -160,6 +585,41 @@ document.addEventListener('DOMContentLoaded', function() {
         ]
     };
 
+    // Datos de diseños de VERAKE
+    const diseñosVerake = {
+        "renders": [
+            "img/vdk/verake/designs/render1.jpg",
+            "img/vdk/verake/designs/render2.jpg",
+            "img/vdk/verake/designs/render3.jpg",
+            "img/vdk/verake/designs/render4.jpg"
+        ],
+        "portadas": [
+            "img/vdk/verake/designs/portada1.jpg",
+            "img/vdk/verake/designs/portada2.jpg",
+            "img/vdk/verake/designs/portada3.jpg",
+            "img/vdk/verake/designs/portada4.jpg"
+        ],
+        "miniaturas": [
+            "img/vdk/verake/designs/miniatura1.jpg",
+            "img/vdk/verake/designs/miniatura2.jpg",
+            "img/vdk/verake/designs/miniatura3.jpg",
+            "img/vdk/verake/designs/miniatura4.jpg"
+        ],
+        "pixel-art-design": [
+            "img/vdk/verake/designs/pixelart1.jpg",
+            "img/vdk/verake/designs/pixelart2.jpg",
+            "img/vdk/verake/designs/pixelart3.jpg",
+            "img/vdk/verake/designs/pixelart4.jpg"
+        ],
+        "logos": [
+            "img/vdk/verake/designs/logo1.jpg",
+            "img/vdk/verake/designs/logo2.jpg",
+            "img/vdk/verake/designs/logo3.jpg",
+            "img/vdk/verake/designs/logo4.jpg"
+        ]
+    };
+
+    // Elementos del DOM
     const categoriaBtns = document.querySelectorAll(".categoria-btn");
     const vistaNormalBtn = document.getElementById("vista-normal");
     const vistaGridBtn = document.getElementById("vista-grid");
@@ -169,11 +629,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const opcionesVisuales = document.getElementById("opciones-visuales");
     const mensajeVisuales = document.getElementById("mensaje-visuales");
     const listaVideos = document.getElementById("lista-videos");
+    const opcionesDiseños = document.getElementById("opciones-diseños");
+    const mensajeDiseños = document.getElementById("mensaje-diseños");
+    const contenedorDiseños = document.getElementById("contenedor-diseños");
+    const listaDiseños = document.getElementById("lista-diseños");
+    const pestanaArtistaBtns = document.querySelectorAll(".pestana-artista-btn");
 
-    let vistaActual = "normal";
+    let vistaActual = "grid";
+    let indiceDiseñoActual = 0;
     let indiceVideoActual = 0;
 
-    // Funciones específicas de VERAKE
+    // Función para cambiar categoría
     function cambiarCategoria(categoria) {
         document.querySelectorAll(".categoria-content").forEach(content => {
             content.classList.remove("active");
@@ -188,28 +654,62 @@ document.addEventListener('DOMContentLoaded', function() {
             opcionesVisuales.style.display = "block";
             mensajeVisuales.style.display = "none";
             contenedorVideos.innerHTML = "";
+            opcionesDiseños.style.display = "none";
+            mensajeDiseños.style.display = "block";
+        } else if (categoria === "diseños") {
+            opcionesDiseños.style.display = "block";
+            mensajeDiseños.style.display = "none";
+            contenedorDiseños.innerHTML = "";
+            opcionesVisuales.style.display = "none";
+            mensajeVisuales.style.display = "block";
         } else {
             opcionesVisuales.style.display = "none";
             mensajeVisuales.style.display = "block";
+            opcionesDiseños.style.display = "none";
+            mensajeDiseños.style.display = "block";
         }
     }
 
+    // Función para cambiar vista
     function cambiarVista(vista) {
         vistaActual = vista;
         contenedorVideos.className = `contenedor-videos ${vista}-view`;
+        contenedorDiseños.className = `contenedor-diseños ${vista}-view`;
         vistaNormalBtn.classList.toggle("active", vista === "normal");
         vistaGridBtn.classList.toggle("active", vista === "grid");
 
-        const iframes = contenedorVideos.querySelectorAll("iframe");
-        iframes.forEach((iframe, index) => {
-            if (vista === "normal") {
+        if (vista === "normal") {
+            const iframes = contenedorVideos.querySelectorAll("iframe");
+            iframes.forEach((iframe, index) => {
                 iframe.style.display = index === indiceVideoActual ? "block" : "none";
-            } else {
+            });
+
+            const imagenes = contenedorDiseños.querySelectorAll("img");
+            imagenes.forEach((img, index) => {
+                img.style.display = index === indiceDiseñoActual ? "block" : "none";
+            });
+        } else {
+            const iframes = contenedorVideos.querySelectorAll("iframe");
+            iframes.forEach(iframe => {
                 iframe.style.display = "block";
-            }
+            });
+
+            const imagenes = contenedorDiseños.querySelectorAll("img");
+            imagenes.forEach(img => {
+                img.style.display = "block";
+            });
+        }
+    }
+
+    // Función para mostrar diseño específico
+    function mostrarDiseño(indice) {
+        const imagenes = contenedorDiseños.querySelectorAll("img");
+        imagenes.forEach((img, i) => {
+            img.style.display = i === indice ? "block" : "none";
         });
     }
 
+    // Función para mostrar video específico
     function mostrarVideo(indice) {
         const iframes = contenedorVideos.querySelectorAll("iframe");
         iframes.forEach((iframe, i) => {
@@ -217,35 +717,54 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Event listeners específicos de VERAKE
+    // Event listeners para botones de categoría
     categoriaBtns.forEach(btn => {
         btn.addEventListener("click", () => {
             cambiarCategoria(btn.getAttribute("data-categoria"));
         });
     });
 
+    // Event listeners para botones de vista
     vistaNormalBtn.addEventListener("click", () => cambiarVista("normal"));
     vistaGridBtn.addEventListener("click", () => cambiarVista("grid"));
 
+    // Event listener para flecha izquierda
     flechaIzquierda.addEventListener("click", () => {
-        if (indiceVideoActual > 0) {
-            indiceVideoActual--;
-            mostrarVideo(indiceVideoActual);
+        if (document.querySelector(".categoria-content.active").id === "visuales-content") {
+            if (indiceVideoActual > 0) {
+                indiceVideoActual--;
+                mostrarVideo(indiceVideoActual);
+            }
+        } else {
+            if (indiceDiseñoActual > 0) {
+                indiceDiseñoActual--;
+                mostrarDiseño(indiceDiseñoActual);
+            }
         }
     });
 
+    // Event listener para flecha derecha
     flechaDerecha.addEventListener("click", () => {
-        const iframes = contenedorVideos.querySelectorAll("iframe");
-        if (indiceVideoActual < iframes.length - 1) {
-            indiceVideoActual++;
-            mostrarVideo(indiceVideoActual);
+        if (document.querySelector(".categoria-content.active").id === "visuales-content") {
+            const iframes = contenedorVideos.querySelectorAll("iframe");
+            if (indiceVideoActual < iframes.length - 1) {
+                indiceVideoActual++;
+                mostrarVideo(indiceVideoActual);
+            }
+        } else {
+            const imagenes = contenedorDiseños.querySelectorAll("img");
+            if (indiceDiseñoActual < imagenes.length - 1) {
+                indiceDiseñoActual++;
+                mostrarDiseño(indiceDiseñoActual);
+            }
         }
     });
 
+    // Event listener para lista de videos
     listaVideos.addEventListener("click", (event) => {
         if (event.target.tagName === "LI") {
             const categoria = event.target.getAttribute("data-categoria");
-            const listaVideosCategoria = videos[categoria];
+            const listaVideosCategoria = videosVerake[categoria];
             if (listaVideosCategoria && listaVideosCategoria.length > 0) {
                 contenedorVideos.innerHTML = "";
                 listaVideosCategoria.forEach(video => {
@@ -264,8 +783,44 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Event listener para lista de diseños
+    listaDiseños.addEventListener("click", (event) => {
+        if (event.target.tagName === "LI") {
+            const categoria = event.target.getAttribute("data-categoria");
+            const listaDiseñosCategoria = diseñosVerake[categoria];
+            if (listaDiseñosCategoria && listaDiseñosCategoria.length > 0) {
+                contenedorDiseños.innerHTML = "";
+                listaDiseñosCategoria.forEach(imagen => {
+                    const img = document.createElement("img");
+                    img.src = imagen;
+                    img.alt = `Diseño ${categoria}`;
+                    img.classList.add("diseño-item");
+                    contenedorDiseños.appendChild(img);
+                });
+                if (vistaActual === "normal") {
+                    indiceDiseñoActual = 0;
+                    mostrarDiseño(indiceDiseñoActual);
+                }
+            }
+        }
+    });
+
+    // Event listener para animación del nombre
+    const letras = document.querySelectorAll('.nombre-animado span');
+    letras.forEach((letra, index) => {
+        letra.style.display = 'inline-block';
+        letra.style.transition = 'transform 0.3s ease';
+        
+        letra.addEventListener('mouseover', () => {
+            letra.style.transform = 'translateY(-5px) rotate(5deg)';
+            setTimeout(() => {
+                letra.style.transform = '';
+            }, 300);
+        });
+    });
+
     // Inicialización
     cambiarCategoria("diseños");
-    cambiarVista("normal");
+    cambiarVista("grid");
 });
 </script>

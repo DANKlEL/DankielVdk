@@ -20,11 +20,11 @@
 :root {
   --color-fondo: #1a1a1a;
   --color-texto: #ffffff;
+  --color-texto-claro: #333333; /* Nuevo: para texto en modo claro */
   --color-primario: #a91313;
   --color-secundario: #333333;
   --color-borde: #444444;
   --color-fondo-claro: #ffffff;
-  --color-texto-claro: #333333;
   --color-contenedor: #1a1a1a;
   --color-contenedor-claro: #ffffff;
 }
@@ -108,6 +108,12 @@ body.light-mode .vista-boton.active {
 
 body.light-mode .logo-red-social {
   filter: brightness(0) invert(0);
+}
+
+/* Nuevo: Estilo para el texto del nombre en modo claro */
+body.light-mode .nombre-perfil h1,
+body.light-mode .nombre-animado span {
+  color: var(--color-texto-claro);
 }
 </style>
 

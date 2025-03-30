@@ -654,3 +654,34 @@
         text-align: center;
     }
 }
+
+/* Estilos para las pestañas */
+.pestanas-portafolio {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+  }
+  
+  .pestana {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .pestana:hover {
+    background-color: #555;
+  }
+  
+  .pestana.active {
+    background-color: #a91313;
+    font-weight: bold;
+  }
