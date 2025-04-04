@@ -17,7 +17,7 @@
     <!-- Pestañas de artistas -->
     <div class="pestanas-artistas">
       <button class="pestana-artista-btn" data-artista="verake">Verake</button>
-      <button class="pestana-artista-btn" data-artista="dankiel">Dankiel</button>
+      <button class="pestana-artista-btn active" data-artista="dankiel">Dankiel</button>
       <button class="pestana-artista-btn" data-artista="ddxous">Ddxous</button>
     </div>
 
@@ -29,7 +29,7 @@
         <div class="banner-perfil">
           <div class="video-banner-container">
             <iframe 
-              src="https://www.youtube.com/embed/[ID_VIDEO_DANKIEL]?autoplay=1&mute=1&loop=1&playlist=[ID_VIDEO_DANKIEL]&controls=0&disablekb=1&modestbranding=1&rel=0&showinfo=0" 
+              src="https://www.youtube.com/embed/uhaQFieDbDA?autoplay=1&mute=1&loop=1&playlist=uhaQFieDbDA&controls=0&disablekb=1&modestbranding=1&rel=0&showinfo=0" 
               frameborder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
               allowfullscreen>
@@ -41,7 +41,7 @@
         <div class="perfil-contenido">
           <!-- Foto de perfil de DANKIEL -->
           <div class="foto-perfil">
-            <img src="img/vdk/dankiel/Dankiel.jpg" alt="Foto de Dankiel">
+            <img src="img/vdk/dankiel/Dankiel.png" alt="Foto de Dankiel">
           </div>
 
           <!-- Nombre con efecto de letras de DANKIEL -->
@@ -58,10 +58,10 @@
 
           <!-- Redes sociales de DANKIEL -->
           <div class="redes-sociales-perfil">
-            <a href="[LINK_YOUTUBE_DANKIEL]" target="_blank" class="youtube-link">
+            <a href="https://www.youtube.com/@Dankiel" target="_blank" class="youtube-link">
               <img src="img/Logos/SocialMedia/YoutubeBlanco.png" alt="YouTube" class="logo-red-social youtube-logo">
             </a>
-            <a href="[LINK_INSTAGRAM_DANKIEL]" target="_blank" class="instagram-link">
+            <a href="https://www.instagram.com/dankiel/" target="_blank" class="instagram-link">
               <img src="img/Logos/SocialMedia/InstagramBlanco.png" alt="Instagram" class="logo-red-social instagram-logo">
             </a>
           </div>
@@ -116,7 +116,7 @@
         <div id="acerca-content" class="categoria-content">
           <div class="acerca-texto">
             <h3>Hola soy Dankiel</h3>
-            <p>Descripción y detalles sobre Dankiel.</p>
+            <p>Diseñador multimedia especializado en creación de contenido visual impactante.</p>
           </div>
         </div>
       </div>
@@ -148,101 +148,269 @@
   </div>
 </div>
 
-<style>
-/* Estilos para las pestañas de artistas */
-.pestanas-artistas {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 15px;
-  background-color: #1a1a1a;
-  border-bottom: 1px solid #333;
-}
-
-.pestana-artista-btn {
-  padding: 8px 20px;
-  background-color: #333;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 14px;
-}
-
-.pestana-artista-btn:hover {
-  background-color: #555;
-}
-
-.pestana-artista-btn.active {
-  background-color: #a91313;
-  font-weight: bold;
-}
-
-.popup {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.popup-contenido {
-  background-color: #1a1a1a;
-  padding: 0;
-  border-radius: 15px;
-  width: 900px;
-  max-width: 90%;
-  height: auto;
-  max-height: 90vh;
-  position: relative;
-  animation: fadeIn 0.5s ease;
-  overflow: hidden;
-  color: white;
-  padding-bottom: 80px; /* Espacio para controles */
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* Resto de tus estilos existentes... */
-</style>
-
 <script>
 // JavaScript específico de DANKIEL
 document.addEventListener('DOMContentLoaded', function() {
     // Datos de videos de DANKIEL
-    const videos = {
+    const videosDankiel = {
         "video-lyrics": [
-            "https://www.youtube.com/embed/[ID_VIDEO1_DANKIEL]",
-            "https://www.youtube.com/embed/[ID_VIDEO2_DANKIEL]"
+            "https://www.youtube.com/embed/ejemplo1",
+            "https://www.youtube.com/embed/ejemplo2"
         ],
         "pixel-art": [
-            "https://www.youtube.com/embed/[ID_VIDEO3_DANKIEL]",
-            "https://www.youtube.com/embed/[ID_VIDEO4_DANKIEL]"
+            "https://www.youtube.com/embed/ejemplo3",
+            "https://www.youtube.com/embed/ejemplo4"
+        ],
+        "3d": [
+            "https://www.youtube.com/embed/ejemplo5",
+            "https://www.youtube.com/embed/ejemplo6"
+        ],
+        "video-clip": [
+            "https://www.youtube.com/embed/ejemplo7",
+            "https://www.youtube.com/embed/ejemplo8"
+        ],
+        "amv": [
+            "https://www.youtube.com/embed/ejemplo9",
+            "https://www.youtube.com/embed/ejemplo10"
         ]
     };
 
-    // Datos de diseños de DANKIEL
-    const diseños = {
+    // Datos de diseños de DANKIEL (actualiza estas rutas con las imágenes reales)
+    const diseñosDankiel = {
         "renders": [
             "img/vdk/dankiel/designs/render1.jpg",
-            "img/vdk/dankiel/designs/render2.jpg"
+            "img/vdk/dankiel/designs/render2.jpg",
+            "img/vdk/dankiel/designs/render3.jpg",
+            "img/vdk/dankiel/designs/render4.jpg"
         ],
         "portadas": [
             "img/vdk/dankiel/designs/portada1.jpg",
-            "img/vdk/dankiel/designs/portada2.jpg"
+            "img/vdk/dankiel/designs/portada2.jpg",
+            "img/vdk/dankiel/designs/portada3.jpg",
+            "img/vdk/dankiel/designs/portada4.jpg"
+        ],
+        "miniaturas": [
+            "img/vdk/dankiel/designs/miniatura1.jpg",
+            "img/vdk/dankiel/designs/miniatura2.jpg",
+            "img/vdk/dankiel/designs/miniatura3.jpg",
+            "img/vdk/dankiel/designs/miniatura4.jpg"
+        ],
+        "pixel-art-design": [
+            "img/vdk/dankiel/designs/pixelart1.jpg",
+            "img/vdk/dankiel/designs/pixelart2.jpg",
+            "img/vdk/dankiel/designs/pixelart3.jpg",
+            "img/vdk/dankiel/designs/pixelart4.jpg"
+        ],
+        "logos": [
+            "img/vdk/dankiel/designs/logo1.jpg",
+            "img/vdk/dankiel/designs/logo2.jpg",
+            "img/vdk/dankiel/designs/logo3.jpg",
+            "img/vdk/dankiel/designs/logo4.jpg"
         ]
     };
 
-    // Resto del código JavaScript específico de Dankiel...
-    // (Similar al de Verake pero con los datos de Dankiel)
+    // Elementos del DOM
+    const categoriaBtns = document.querySelectorAll(".categoria-btn");
+    const vistaNormalBtn = document.getElementById("vista-normal");
+    const vistaGridBtn = document.getElementById("vista-grid");
+    const flechaIzquierda = document.getElementById("flecha-izquierda");
+    const flechaDerecha = document.getElementById("flecha-derecha");
+    const contenedorVideos = document.getElementById("contenedor-videos");
+    const opcionesVisuales = document.getElementById("opciones-visuales");
+    const mensajeVisuales = document.getElementById("mensaje-visuales");
+    const listaVideos = document.getElementById("lista-videos");
+    const opcionesDiseños = document.getElementById("opciones-diseños");
+    const mensajeDiseños = document.getElementById("mensaje-diseños");
+    const contenedorDiseños = document.getElementById("contenedor-diseños");
+    const listaDiseños = document.getElementById("lista-diseños");
+    const pestanaArtistaBtns = document.querySelectorAll(".pestana-artista-btn");
+
+    let vistaActual = "grid";
+    let indiceDiseñoActual = 0;
+    let indiceVideoActual = 0;
+
+    // Función para cambiar categoría
+    function cambiarCategoria(categoria) {
+        document.querySelectorAll(".categoria-content").forEach(content => {
+            content.classList.remove("active");
+        });
+        document.getElementById(`${categoria}-content`).classList.add("active");
+        
+        categoriaBtns.forEach(btn => {
+            btn.classList.toggle("active", btn.getAttribute("data-categoria") === categoria);
+        });
+        
+        if (categoria === "visuales") {
+            opcionesVisuales.style.display = "block";
+            mensajeVisuales.style.display = "none";
+            contenedorVideos.innerHTML = "";
+            opcionesDiseños.style.display = "none";
+            mensajeDiseños.style.display = "block";
+        } else if (categoria === "diseños") {
+            opcionesDiseños.style.display = "block";
+            mensajeDiseños.style.display = "none";
+            contenedorDiseños.innerHTML = "";
+            opcionesVisuales.style.display = "none";
+            mensajeVisuales.style.display = "block";
+        } else {
+            opcionesVisuales.style.display = "none";
+            mensajeVisuales.style.display = "block";
+            opcionesDiseños.style.display = "none";
+            mensajeDiseños.style.display = "block";
+        }
+    }
+
+    // Función para cambiar vista
+    function cambiarVista(vista) {
+        vistaActual = vista;
+        contenedorVideos.className = `contenedor-videos ${vista}-view`;
+        contenedorDiseños.className = `contenedor-diseños ${vista}-view`;
+        vistaNormalBtn.classList.toggle("active", vista === "normal");
+        vistaGridBtn.classList.toggle("active", vista === "grid");
+
+        if (vista === "normal") {
+            const iframes = contenedorVideos.querySelectorAll("iframe");
+            iframes.forEach((iframe, index) => {
+                iframe.style.display = index === indiceVideoActual ? "block" : "none";
+            });
+
+            const imagenes = contenedorDiseños.querySelectorAll("img");
+            imagenes.forEach((img, index) => {
+                img.style.display = index === indiceDiseñoActual ? "block" : "none";
+            });
+        } else {
+            const iframes = contenedorVideos.querySelectorAll("iframe");
+            iframes.forEach(iframe => {
+                iframe.style.display = "block";
+            });
+
+            const imagenes = contenedorDiseños.querySelectorAll("img");
+            imagenes.forEach(img => {
+                img.style.display = "block";
+            });
+        }
+    }
+
+    // Función para mostrar diseño específico
+    function mostrarDiseño(indice) {
+        const imagenes = contenedorDiseños.querySelectorAll("img");
+        imagenes.forEach((img, i) => {
+            img.style.display = i === indice ? "block" : "none";
+        });
+    }
+
+    // Función para mostrar video específico
+    function mostrarVideo(indice) {
+        const iframes = contenedorVideos.querySelectorAll("iframe");
+        iframes.forEach((iframe, i) => {
+            iframe.style.display = i === indice ? "block" : "none";
+        });
+    }
+
+    // Event listeners para botones de categoría
+    categoriaBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            cambiarCategoria(btn.getAttribute("data-categoria"));
+        });
+    });
+
+    // Event listeners para botones de vista
+    vistaNormalBtn.addEventListener("click", () => cambiarVista("normal"));
+    vistaGridBtn.addEventListener("click", () => cambiarVista("grid"));
+
+    // Event listener para flecha izquierda
+    flechaIzquierda.addEventListener("click", () => {
+        if (document.querySelector(".categoria-content.active").id === "visuales-content") {
+            if (indiceVideoActual > 0) {
+                indiceVideoActual--;
+                mostrarVideo(indiceVideoActual);
+            }
+        } else {
+            if (indiceDiseñoActual > 0) {
+                indiceDiseñoActual--;
+                mostrarDiseño(indiceDiseñoActual);
+            }
+        }
+    });
+
+    // Event listener para flecha derecha
+    flechaDerecha.addEventListener("click", () => {
+        if (document.querySelector(".categoria-content.active").id === "visuales-content") {
+            const iframes = contenedorVideos.querySelectorAll("iframe");
+            if (indiceVideoActual < iframes.length - 1) {
+                indiceVideoActual++;
+                mostrarVideo(indiceVideoActual);
+            }
+        } else {
+            const imagenes = contenedorDiseños.querySelectorAll("img");
+            if (indiceDiseñoActual < imagenes.length - 1) {
+                indiceDiseñoActual++;
+                mostrarDiseño(indiceDiseñoActual);
+            }
+        }
+    });
+
+    // Event listener para lista de videos
+    listaVideos.addEventListener("click", (event) => {
+        if (event.target.tagName === "LI") {
+            const categoria = event.target.getAttribute("data-categoria");
+            const listaVideosCategoria = videosDankiel[categoria];
+            if (listaVideosCategoria && listaVideosCategoria.length > 0) {
+                contenedorVideos.innerHTML = "";
+                listaVideosCategoria.forEach(video => {
+                    const iframe = document.createElement("iframe");
+                    iframe.src = video;
+                    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+                    iframe.allowFullscreen = true;
+                    iframe.classList.add("video-item");
+                    contenedorVideos.appendChild(iframe);
+                });
+                if (vistaActual === "normal") {
+                    indiceVideoActual = 0;
+                    mostrarVideo(indiceVideoActual);
+                }
+            }
+        }
+    });
+
+    // Event listener para lista de diseños
+    listaDiseños.addEventListener("click", (event) => {
+        if (event.target.tagName === "LI") {
+            const categoria = event.target.getAttribute("data-categoria");
+            const listaDiseñosCategoria = diseñosDankiel[categoria];
+            if (listaDiseñosCategoria && listaDiseñosCategoria.length > 0) {
+                contenedorDiseños.innerHTML = "";
+                listaDiseñosCategoria.forEach(imagen => {
+                    const img = document.createElement("img");
+                    img.src = imagen;
+                    img.alt = `Diseño ${categoria}`;
+                    img.classList.add("diseño-item");
+                    contenedorDiseños.appendChild(img);
+                });
+                if (vistaActual === "normal") {
+                    indiceDiseñoActual = 0;
+                    mostrarDiseño(indiceDiseñoActual);
+                }
+            }
+        }
+    });
+
+    // Event listener para animación del nombre
+    const letras = document.querySelectorAll('.nombre-animado span');
+    letras.forEach((letra, index) => {
+        letra.style.display = 'inline-block';
+        letra.style.transition = 'transform 0.3s ease';
+        
+        letra.addEventListener('mouseover', () => {
+            letra.style.transform = 'translateY(-5px) rotate(5deg)';
+            setTimeout(() => {
+                letra.style.transform = '';
+            }, 300);
+        });
+    });
+
+    // Inicialización
+    cambiarCategoria("diseños");
+    cambiarVista("grid");
 });
 </script>
